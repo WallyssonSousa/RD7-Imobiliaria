@@ -6,22 +6,22 @@ export function About() {
     {
       icon: Shield,
       title: "Confiança e Segurança",
-      description: "Todas as transações são realizadas com total transparência e segurança jurídica.",
+      description: "Texto sobre confiança e segurança da empresa.",
     },
     {
       icon: Award,
       title: "Excelência em Serviço",
-      description: "Atendimento personalizado e consultoria especializada para cada cliente.",
+      description: "Texto sobre excelência e serviço que a empresa proporciona.",
     },
     {
       icon: Users,
       title: "Equipe Especializada",
-      description: "Profissionais qualificados com amplo conhecimento do mercado imobiliário.",
+      description: "Texto sobre a equipe.",
     },
     {
       icon: Clock,
       title: "Agilidade nos Processos",
-      description: "Processos otimizados para garantir rapidez em todas as etapas da negociação.",
+      description: "Texto sobre agilidade nos processos.",
     },
   ]
 
@@ -30,11 +30,10 @@ export function About() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">
-            Por que Escolher a PremiumCasa?
+            Titulo Sobre Nós
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Somos uma imobiliária comprometida em oferecer a melhor experiência na compra, venda e locação de imóveis de
-            alto padrão.
+            Texto texto texto texto texto texto texto texto texto texto.
           </p>
         </div>
 

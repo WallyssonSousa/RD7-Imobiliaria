@@ -1,38 +1,28 @@
-import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Home, Key, FileText, Calculator, Users, Headphones } from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card"
+import { Calculator, FileText, Home, Key } from "lucide-react"
 
 export function Services() {
   const services = [
     {
       icon: Home,
       title: "Compra e Venda",
-      description: "Assessoria completa para compra e venda de imóveis com toda segurança jurídica.",
+      description: "Texto sobre compra completa e venda.",
     },
     {
       icon: Key,
       title: "Locação",
-      description: "Gestão completa de locações, desde a captação até a administração do contrato.",
+      description: "Gestão completa de locações.",
     },
     {
       icon: FileText,
       title: "Documentação",
-      description: "Cuidamos de toda a documentação necessária para sua transação imobiliária.",
+      description: "Texto sobre documentação.",
     },
     {
       icon: Calculator,
       title: "Avaliação",
-      description: "Avaliação precisa do seu imóvel com base no mercado atual e localização.",
-    },
-    {
-      icon: Users,
-      title: "Consultoria",
-      description: "Consultoria especializada para investimentos imobiliários e planejamento.",
-    },
-    {
-      icon: Headphones,
-      title: "Suporte 24/7",
-      description: "Atendimento personalizado e suporte completo em todas as etapas do processo.",
+      description: "Avaliação sobre valor de mercado baseado na localização.",
     },
   ]
 
@@ -42,8 +32,7 @@ export function Services() {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">Nossos Serviços</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Oferecemos uma gama completa de serviços imobiliários para atender todas as suas necessidades com
-            excelência.
+            Texto sobre nossos serviços.
           </p>
         </div>
 
@@ -67,15 +56,14 @@ export function Services() {
         <div className="text-center mt-16">
           <div className="bg-muted/50 rounded-2xl p-8 md:p-12">
             <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4 text-balance">
-              Pronto para Encontrar seu Imóvel Ideal?
+              Titulo para encontrar imóvel ideal
             </h3>
             <p className="text-lg text-muted-foreground mb-6 text-pretty max-w-2xl mx-auto">
-              Nossa equipe está pronta para ajudá-lo a encontrar o imóvel perfeito. Entre em contato conosco e comece
-              sua jornada hoje mesmo.
+              Texto sobre ajuda a encontrar imóvel ideal.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-                Falar com Consultor
+                Falar com Equipe
               </Button>
               <Button
                 variant="outline"

@@ -23,7 +23,7 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <Home className="h-8 w-8 text-accent" />
-            <span className="text-xl font-bold text-foreground">PremiumCasa</span>
+            <span className="text-xl font-bold text-foreground">RD7</span>
           </Link>
 
           {/* Desktop Navigation */}

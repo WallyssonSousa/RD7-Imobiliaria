@@ -1,5 +1,5 @@
+import { Facebook, Home, Instagram, Mail, MapPin, Phone } from "lucide-react"
 import Link from "next/link"
-import { Home, Phone, Mail, MapPin, Facebook, Instagram, Linkedin, Twitter } from "lucide-react"
 
 export function Footer() {
   return (
@@ -10,40 +10,25 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center space-x-2 mb-4">
               <Home className="h-8 w-8 text-accent" />
-              <span className="text-xl font-bold">PremiumCasa</span>
+              <span className="text-xl font-bold">RD7</span>
             </Link>
             <p className="text-primary-foreground/80 text-sm text-pretty mb-4">
-              Sua imobiliária de confiança para encontrar o imóvel dos seus sonhos. Excelência, transparência e
-              atendimento personalizado há mais de 15 anos no mercado.
+              Texto falando sobre a imobiliária.
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://facebook.com/premiumcasa"
+                href=""
                 className="text-primary-foreground/60 hover:text-accent transition-colors"
                 aria-label="Facebook"
               >
                 <Facebook className="h-5 w-5" />
               </a>
               <a
-                href="https://instagram.com/premiumcasa"
+                href=""
                 className="text-primary-foreground/60 hover:text-accent transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram className="h-5 w-5" />
-              </a>
-              <a
-                href="https://linkedin.com/company/premiumcasa"
-                className="text-primary-foreground/60 hover:text-accent transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a
-                href="https://twitter.com/premiumcasa"
-                className="text-primary-foreground/60 hover:text-accent transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter className="h-5 w-5" />
               </a>
             </div>
           </div>
@@ -81,11 +66,6 @@ export function Footer() {
               <li>
                 <Link href="/login" className="text-primary-foreground/80 hover:text-accent transition-colors text-sm">
                   Área do Cliente
-                </Link>
-              </li>
-              <li>
-                <Link href="/blog" className="text-primary-foreground/80 hover:text-accent transition-colors text-sm">
-                  Blog
                 </Link>
               </li>
             </ul>
@@ -153,29 +133,29 @@ export function Footer() {
               <li className="flex items-center text-sm text-primary-foreground/80">
                 <MapPin className="h-4 w-4 mr-2 text-accent flex-shrink-0" />
                 <span>
-                  Av. Atlântica, 1234 - Sala 1001
+                  Endereço
                   <br />
-                  Copacabana, Rio de Janeiro - RJ
+                  Cidade
                   <br />
-                  CEP: 22021-001
+                  CEP: 00000-000
                 </span>
               </li>
               <li className="flex items-center text-sm text-primary-foreground/80">
                 <Phone className="h-4 w-4 mr-2 text-accent flex-shrink-0" />
                 <div>
-                  <a href="tel:+552133334444" className="hover:text-accent transition-colors">
+                  <a href="tel:+" className="hover:text-accent transition-colors">
                     (21) 3333-4444
                   </a>
                   <br />
-                  <a href="https://wa.me/5521999998888" className="hover:text-accent transition-colors">
+                  <a href="https://wa.me/" className="hover:text-accent transition-colors">
                     (21) 99999-8888 (WhatsApp)
                   </a>
                 </div>
               </li>
               <li className="flex items-center text-sm text-primary-foreground/80">
                 <Mail className="h-4 w-4 mr-2 text-accent flex-shrink-0" />
-                <a href="mailto:contato@premiumcasa.com.br" className="hover:text-accent transition-colors">
-                  contato@premiumcasa.com.br
+                <a href="mailto:emailimobiliaria@gmail.com" className="hover:text-accent transition-colors">
+                  emailimobiliaria@gmail.com
                 </a>
               </li>
             </ul>
@@ -185,19 +165,8 @@ export function Footer() {
         <div className="border-t border-primary-foreground/20 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-primary-foreground/60 text-center md:text-left">
-              © 2024 PremiumCasa. Todos os direitos reservados. | CRECI: 12345-J
+              © 2025 RD7. Todos os direitos reservados.
             </p>
-            <div className="flex space-x-4 text-xs text-primary-foreground/60">
-              <Link href="/privacidade" className="hover:text-accent transition-colors">
-                Política de Privacidade
-              </Link>
-              <Link href="/termos" className="hover:text-accent transition-colors">
-                Termos de Uso
-              </Link>
-              <Link href="/cookies" className="hover:text-accent transition-colors">
-                Cookies
-              </Link>
-            </div>
           </div>
         </div>
       </div>

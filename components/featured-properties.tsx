@@ -8,8 +8,8 @@ export function FeaturedProperties() {
   const properties = [
     {
       id: 1,
-      title: "Apartamento Luxuoso em Copacabana",
-      price: "R$ 2.500.000",
+      title: "Titulo sobre apartamento",
+      price: "R$ 1.200.000",
       type: "Venda",
       location: "Copacabana, Rio de Janeiro",
       bedrooms: 3,
@@ -19,8 +19,8 @@ export function FeaturedProperties() {
     },
     {
       id: 2,
-      title: "Casa Moderna em Condomínio Fechado",
-      price: "R$ 8.500/mês",
+      title: "Titulo sobre apartamento",
+      price: "R$ 1.200.000",
       type: "Aluguel",
       location: "Barra da Tijuca, Rio de Janeiro",
       bedrooms: 4,
@@ -30,8 +30,8 @@ export function FeaturedProperties() {
     },
     {
       id: 3,
-      title: "Cobertura com Vista para o Mar",
-      price: "R$ 4.200.000",
+      title: "Titulo sobre apartamento",
+      price: "R$ 1.200.000",
       type: "Venda",
       location: "Ipanema, Rio de Janeiro",
       bedrooms: 4,
@@ -47,8 +47,7 @@ export function FeaturedProperties() {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">Imóveis em Destaque</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Confira nossa seleção especial de imóveis premium, cuidadosamente escolhidos para atender aos mais altos
-            padrões.
+            Texto sobre os imóveis em destaque.
           </p>
         </div>
 
