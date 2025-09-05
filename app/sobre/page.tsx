@@ -9,38 +9,38 @@ export default function SobrePage() {
     {
       icon: Shield,
       title: "Confiança",
-      description: "Transparência e segurança em todas as transações",
+      description: "Texto sobre confiança.",
     },
     {
       icon: Heart,
       title: "Dedicação",
-      description: "Atendimento personalizado e cuidado com cada cliente",
+      description: "Texto sobre dedicação.",
     },
     {
       icon: Target,
       title: "Excelência",
-      description: "Busca constante pela qualidade e inovação",
+      description: "Texto sobre excelência.",
     },
   ]
 
   const team = [
     {
-      name: "Carlos Mendes",
-      role: "Diretor Geral",
-      experience: "20 anos",
-      creci: "CRECI 12345-F",
+      name: "",
+      role: "",
+      experience: "",
+      creci: "",
     },
     {
-      name: "Ana Silva",
-      role: "Gerente de Vendas",
-      experience: "15 anos",
-      creci: "CRECI 23456-F",
+      name: "",
+      role: "",
+      experience: "",
+      creci: "",
     },
     {
-      name: "Roberto Santos",
-      role: "Especialista em Locações",
-      experience: "12 anos",
-      creci: "CRECI 34567-F",
+      name: "",
+      role: "",
+      experience: "",
+      creci: "",
     },
   ]
 
@@ -48,13 +48,12 @@ export default function SobrePage() {
     <div className="min-h-screen bg-background">
       <Header />
       <main>
-        {/* Hero Section */}
         <div className="bg-muted/20 py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto">
-              <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">Sobre a PremiumCasa</h1>
+              <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">Sobre a RD7</h1>
               <p className="text-lg text-muted-foreground text-pretty">
-                Há mais de 15 anos conectando pessoas aos seus lares dos sonhos com excelência e confiança.
+                Texto sobre a imobiliária
               </p>
             </div>
           </div>
@@ -67,24 +66,22 @@ export default function SobrePage() {
               <div>
                 <h2 className="text-3xl font-bold text-foreground mb-6">Nossa História</h2>
                 <p className="text-muted-foreground mb-4 text-pretty">
-                  Fundada em 2009, a PremiumCasa nasceu com o objetivo de revolucionar o mercado imobiliário do Rio de
-                  Janeiro, oferecendo um atendimento diferenciado e focado na experiência do cliente.
+                  Texto sobre a nossa História.
                 </p>
                 <p className="text-muted-foreground mb-6 text-pretty">
-                  Ao longo dos anos, construímos uma reputação sólida baseada na confiança, transparência e resultados
-                  excepcionais. Hoje, somos referência em imóveis premium na cidade maravilhosa.
+                  .
                 </p>
                 <div className="grid grid-cols-3 gap-4">
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-accent">15+</div>
+                    <div className="text-2xl font-bold text-accent">00+</div>
                     <div className="text-sm text-muted-foreground">Anos</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-accent">1000+</div>
+                    <div className="text-2xl font-bold text-accent">0000+</div>
                     <div className="text-sm text-muted-foreground">Clientes</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-accent">500+</div>
+                    <div className="text-2xl font-bold text-accent">000+</div>
                     <div className="text-sm text-muted-foreground">Imóveis</div>
                   </div>
                 </div>
@@ -96,13 +93,13 @@ export default function SobrePage() {
           </div>
         </section>
 
-        {/* Nossos Valores */}
+        {/* Valores */}
         <section className="py-20 bg-muted/20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Nossos Valores</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-                Os princípios que guiam nossa atuação e definem nossa identidade no mercado imobiliário.
+                Texto sobre valores.
               </p>
             </div>
 
@@ -122,13 +119,13 @@ export default function SobrePage() {
           </div>
         </section>
 
-        {/* Nossa Equipe */}
+        {/* Equipe */}
         <section className="py-20 bg-background">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Nossa Equipe</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-                Profissionais experientes e qualificados, prontos para atender suas necessidades imobiliárias.
+                Texto sobre a equipe.
               </p>
             </div>
 
