@@ -1,51 +1,30 @@
-import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Home, Key, Calculator, Users, FileText, Headphones } from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card"
+import { Calculator, Home, Key } from "lucide-react"
 
 export function ContactDepartments() {
   const departments = [
     {
       icon: Home,
       title: "Vendas",
-      description: "Especialistas em compra e venda de imóveis premium",
+      description: "Dapartamente de vendas",
       contact: "vendas@premiumcasa.com.br",
       phone: "(21) 3333-4445",
     },
     {
       icon: Key,
       title: "Locações",
-      description: "Gestão completa de locações residenciais e comerciais",
-      contact: "locacoes@premiumcasa.com.br",
-      phone: "(21) 3333-4446",
+      description: "Departamento de locações",
+      contact: "contato@imobiliaria.com.br",
+      phone: "(00) 0000-0000",
     },
     {
       icon: Calculator,
       title: "Avaliações",
-      description: "Avaliação precisa e laudo técnico do seu imóvel",
-      contact: "avaliacoes@premiumcasa.com.br",
-      phone: "(21) 3333-4447",
-    },
-    {
-      icon: Users,
-      title: "Consultoria",
-      description: "Consultoria especializada em investimentos imobiliários",
-      contact: "consultoria@premiumcasa.com.br",
-      phone: "(21) 3333-4448",
-    },
-    {
-      icon: FileText,
-      title: "Jurídico",
-      description: "Suporte jurídico completo para suas transações",
-      contact: "juridico@premiumcasa.com.br",
-      phone: "(21) 3333-4449",
-    },
-    {
-      icon: Headphones,
-      title: "Suporte",
-      description: "Atendimento ao cliente e suporte técnico",
-      contact: "suporte@premiumcasa.com.br",
-      phone: "(21) 3333-4450",
-    },
+      description: "Departamento de avaliações",
+      contact: "contato@imobiliaria.com.br",
+      phone: "(00) 0000-0000",
+    }
   ]
 
   return (
@@ -53,10 +32,10 @@ export function ContactDepartments() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">
-            Fale com o Departamento Certo
+            Fale com o Departamento 
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Nossa equipe especializada está organizada para atender suas necessidades específicas com máxima eficiência.
+            Texto sobre os departamentos.
           </p>
         </div>
 

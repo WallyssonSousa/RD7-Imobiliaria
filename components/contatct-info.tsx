@@ -9,26 +9,26 @@ export function ContactInfo() {
     {
       icon: Phone,
       title: "Telefone",
-      info: "(21) 3333-4444",
+      info: "(00) 0000-0000",
       description: "Atendimento de segunda a sexta",
       action: "Ligar Agora",
-      href: "tel:+552133334444",
+      href: "tel:+00000000000",
     },
     {
       icon: MessageCircle,
       title: "WhatsApp",
-      info: "(21) 99999-8888",
+      info: "(00) 00000-0000",
       description: "Atendimento rápido e direto",
       action: "Chamar no WhatsApp",
-      href: "https://wa.me/5521999998888",
+      href: "https://wa.me/",
     },
     {
       icon: Mail,
       title: "E-mail",
-      info: "contato@premiumcasa.com.br",
-      description: "Resposta em até 24 horas",
+      info: "contato@imobiliaria.com.br",
+      description: "Resposta rápida",
       action: "Enviar E-mail",
-      href: "mailto:contato@premiumcasa.com.br",
+      href: "mailto:contato@imobiliaria.com.br",
     },
   ]
 
@@ -37,7 +37,7 @@ export function ContactInfo() {
       <div>
         <h2 className="text-2xl font-bold text-foreground mb-4">Informações de Contato</h2>
         <p className="text-muted-foreground text-pretty">
-          Escolha a forma de contato que preferir. Estamos sempre disponíveis para atendê-lo da melhor forma.
+          Escolha a forma de contato que preferir.
         </p>
       </div>
 
@@ -80,11 +80,11 @@ export function ContactInfo() {
             <div className="flex-1">
               <h3 className="font-semibold text-foreground mb-2">Nosso Escritório</h3>
               <p className="text-muted-foreground mb-2">
-                Av. Atlântica, 1234 - Sala 1001
+                Endereço completo
                 <br />
-                Copacabana, Rio de Janeiro - RJ
+                Cidade, Cidade
                 <br />
-                CEP: 22021-001
+                CEP: 00000-00000
               </p>
               <Button
                 asChild
@@ -93,7 +93,7 @@ export function ContactInfo() {
                 className="border-accent text-accent hover:bg-accent hover:text-accent-foreground bg-transparent"
               >
                 <a
-                  href="https://maps.google.com/?q=Av.+Atlântica,+1234,+Copacabana,+Rio+de+Janeiro"
+                  href="https://maps.google.com/?q=Endereço+completo,+Cidade,+CEP"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

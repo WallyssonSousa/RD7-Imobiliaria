@@ -10,7 +10,6 @@ export default function ContatoPage() {
     <div className="min-h-screen bg-background">
       <Header />
       <main>
-        {/* Hero Section */}
         <div className="bg-muted/20 py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto">
@@ -18,8 +17,7 @@ export default function ContatoPage() {
                 Entre em Contato Conosco
               </h1>
               <p className="text-lg text-muted-foreground text-pretty">
-                Estamos aqui para ajudá-lo a encontrar o imóvel perfeito. Nossa equipe especializada está pronta para
-                atendê-lo com excelência e dedicação.
+                Texto para entrar em contato.
               </p>
             </div>
           </div>
@@ -27,22 +25,18 @@ export default function ContatoPage() {
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {/* Contact Form */}
             <div>
               <ContactForm />
             </div>
 
-            {/* Contact Information */}
             <div>
               <ContactInfo />
             </div>
           </div>
         </div>
 
-        {/* Departments */}
         <ContactDepartments />
 
-        {/* Map */}
         <ContactMap />
       </main>
       <Footer />

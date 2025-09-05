@@ -37,7 +37,7 @@ export function ContactMap() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-semibold text-foreground mb-2">Mapa Interativo</h3>
-                <p className="text-muted-foreground text-sm">Av. Atlântica, 1234 - Copacabana, RJ</p>
+                <p className="text-muted-foreground text-sm">Endereço completo</p>
               </div>
             </div>
           </div>
@@ -49,15 +49,15 @@ export function ContactMap() {
               <div className="space-y-3 text-sm">
                 <div>
                   <span className="font-medium text-foreground">Metrô:</span>
-                  <p className="text-muted-foreground">Estação Cardeal Arcoverde (5 min caminhando)</p>
+                  <p className="text-muted-foreground"></p>
                 </div>
                 <div>
                   <span className="font-medium text-foreground">Ônibus:</span>
-                  <p className="text-muted-foreground">Linhas 415, 435, 474 (Ponto em frente)</p>
+                  <p className="text-muted-foreground"></p>
                 </div>
                 <div>
                   <span className="font-medium text-foreground">Carro:</span>
-                  <p className="text-muted-foreground">Estacionamento próprio disponível</p>
+                  <p className="text-muted-foreground"></p>
                 </div>
               </div>
             </div>
@@ -65,17 +65,17 @@ export function ContactMap() {
             <div className="bg-card rounded-lg p-6 border border-border">
               <h3 className="text-lg font-semibold text-foreground mb-4">Pontos de Referência</h3>
               <div className="space-y-2 text-sm text-muted-foreground">
-                <p>• Copacabana Palace Hotel (200m)</p>
-                <p>• Forte de Copacabana (500m)</p>
-                <p>• Shopping Cassino Atlântico (300m)</p>
-                <p>• Praia de Copacabana (em frente)</p>
+                <p>• </p>
+                <p>• </p>
+                <p>• </p>
+                <p>• </p>
               </div>
             </div>
 
             <div className="bg-accent/5 rounded-lg p-6 border border-accent/20">
               <h3 className="text-lg font-semibold text-foreground mb-2">Agende sua Visita</h3>
               <p className="text-sm text-muted-foreground mb-4">
-                Prefere nos conhecer pessoalmente? Agende uma visita ao nosso escritório.
+                Prefere nos conhecer pessoalmente? Agende sua visita.
               </p>
               <button className="w-full bg-accent text-accent-foreground hover:bg-accent/90 transition-colors rounded-md px-4 py-2 text-sm font-medium">
                 Agendar Visita
