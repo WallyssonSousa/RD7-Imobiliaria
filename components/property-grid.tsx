@@ -15,11 +15,11 @@ export function PropertyGrid() {
   const properties = [
     {
       id: 1,
-      title: "Apartamento Luxuoso em Copacabana",
+      title: "Titulo sobre o imovel",
       price: "R$ 2.500.000",
       monthlyPrice: null,
       type: "Venda",
-      location: "Copacabana, Rio de Janeiro",
+      location: "Cidade, Cidade",
       bedrooms: 3,
       bathrooms: 2,
       area: 120,
@@ -28,12 +28,11 @@ export function PropertyGrid() {
     },
     {
       id: 2,
-      title: "Casa Moderna em Condomínio Fechado",
+      title: "Titulo sobre o imovel",
       price: "R$ 8.500/mês",
       monthlyPrice: "R$ 8.500",
       type: "Aluguel",
-      location: "Barra da Tijuca, Rio de Janeiro",
-      bedrooms: 4,
+      location: "Cidade, Cidade", bedrooms: 4,
       bathrooms: 3,
       area: 250,
       image: "/modern-house-gated-community.jpg",
@@ -41,12 +40,11 @@ export function PropertyGrid() {
     },
     {
       id: 3,
-      title: "Cobertura com Vista para o Mar",
+      title: "Titulo sobre o imovel",
       price: "R$ 4.200.000",
       monthlyPrice: null,
       type: "Venda",
-      location: "Ipanema, Rio de Janeiro",
-      bedrooms: 4,
+      location: "Cidade, Cidade", bedrooms: 4,
       bathrooms: 4,
       area: 300,
       image: "/penthouse-ocean-view-ipanema.jpg",
@@ -54,12 +52,11 @@ export function PropertyGrid() {
     },
     {
       id: 4,
-      title: "Loft Moderno no Centro",
+      title: "Titulo sobre o imovel",
       price: "R$ 1.800.000",
       monthlyPrice: null,
       type: "Venda",
-      location: "Centro, Rio de Janeiro",
-      bedrooms: 2,
+      location: "Cidade, Cidade", bedrooms: 2,
       bathrooms: 2,
       area: 85,
       image: "/modern-loft-downtown.jpg",
@@ -67,12 +64,11 @@ export function PropertyGrid() {
     },
     {
       id: 5,
-      title: "Casa de Luxo em Condomínio",
+      title: "Titulo sobre o imovel",
       price: "R$ 12.000/mês",
       monthlyPrice: "R$ 12.000",
       type: "Aluguel",
-      location: "Recreio, Rio de Janeiro",
-      bedrooms: 5,
+      location: "Cidade, Cidade", bedrooms: 5,
       bathrooms: 4,
       area: 400,
       image: "/luxury-house-gated-community.jpg",
@@ -80,12 +76,11 @@ export function PropertyGrid() {
     },
     {
       id: 6,
-      title: "Apartamento com Vista Panorâmica",
+      title: "Titulo sobre o imovel",
       price: "R$ 3.800.000",
       monthlyPrice: null,
       type: "Venda",
-      location: "Leblon, Rio de Janeiro",
-      bedrooms: 3,
+      location: "Cidade, Cidade", bedrooms: 3,
       bathrooms: 3,
       area: 180,
       image: "/apartment-panoramic-view-leblon.jpg",
@@ -93,12 +88,11 @@ export function PropertyGrid() {
     },
     {
       id: 7,
-      title: "Studio Elegante em Ipanema",
+      title: "Titulo sobre o imovel",
       price: "R$ 4.200/mês",
       monthlyPrice: "R$ 4.200",
       type: "Aluguel",
-      location: "Ipanema, Rio de Janeiro",
-      bedrooms: 1,
+      location: "Cidade, Cidade", bedrooms: 1,
       bathrooms: 1,
       area: 45,
       image: "/elegant-studio-ipanema.jpg",
@@ -106,12 +100,11 @@ export function PropertyGrid() {
     },
     {
       id: 8,
-      title: "Casa Duplex com Jardim",
+      title: "Titulo sobre o imovel",
       price: "R$ 2.800.000",
       monthlyPrice: null,
       type: "Venda",
-      location: "Tijuca, Rio de Janeiro",
-      bedrooms: 4,
+      location: "Cidade, Cidade", bedrooms: 4,
       bathrooms: 3,
       area: 220,
       image: "/duplex-house-garden-tijuca.jpg",
@@ -119,12 +112,11 @@ export function PropertyGrid() {
     },
     {
       id: 9,
-      title: "Cobertura Duplex Premium",
+      title: "Titulo sobre o imovel",
       price: "R$ 18.000/mês",
       monthlyPrice: "R$ 18.000",
       type: "Aluguel",
-      location: "Botafogo, Rio de Janeiro",
-      bedrooms: 4,
+      location: "Cidade, Cidade", bedrooms: 4,
       bathrooms: 4,
       area: 350,
       image: "/premium-duplex-penthouse-botafogo.jpg",
@@ -137,19 +129,31 @@ export function PropertyGrid() {
   const endIndex = startIndex + itemsPerPage
   const currentProperties = properties.slice(startIndex, endIndex)
 
-  const PropertyCard = ({ property, isListView = false }: { property: any; isListView?: boolean }) => (
+  interface Property {
+    id: number;
+    title: string;
+    price: string;
+    monthlyPrice: string | null;
+    type: string;
+    location: string;
+    bedrooms: number;
+    bathrooms: number;
+    area: number;
+    image: string;
+    featured: boolean;
+  }
+
+  const PropertyCard = ({ property, isListView = false }: { property: Property; isListView?: boolean }) => (
     <Card
-      className={`overflow-hidden border-border hover:shadow-xl transition-all duration-300 group ${
-        isListView ? "flex flex-row" : ""
-      }`}
+      className={`overflow-hidden border-border hover:shadow-xl transition-all duration-300 group ${isListView ? "flex flex-row" : ""
+        }`}
     >
       <div className={`relative ${isListView ? "w-80 flex-shrink-0" : ""}`}>
         <img
           src={property.image || "/placeholder.svg"}
           alt={property.title}
-          className={`object-cover group-hover:scale-105 transition-transform duration-300 ${
-            isListView ? "w-full h-full" : "w-full h-64"
-          }`}
+          className={`object-cover group-hover:scale-105 transition-transform duration-300 ${isListView ? "w-full h-full" : "w-full h-64"
+            }`}
         />
         <div className="absolute top-4 left-4 flex gap-2">
           <Badge

@@ -1,9 +1,9 @@
 export function PropertyStats() {
   const stats = [
-    { label: "Imóveis Disponíveis", value: "500+" },
-    { label: "Para Venda", value: "320" },
-    { label: "Para Locação", value: "180" },
-    { label: "Vendidos este Mês", value: "45" },
+    { label: "Imóveis Disponíveis", value: "000+" },
+    { label: "Para Venda", value: "000" },
+    { label: "Para Locação", value: "000" },
+    { label: "Vendidos este Mês", value: "00" },
   ]
 
   return (

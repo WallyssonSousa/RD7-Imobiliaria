@@ -16,7 +16,7 @@ export default function ImoveisPage() {
                 Encontre seu Imóvel Ideal
               </h1>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-                Explore nossa seleção completa de imóveis premium para compra e locação
+                Texto para encontra Imóvel ideal.
               </p>
             </div>
             <PropertyStats />
