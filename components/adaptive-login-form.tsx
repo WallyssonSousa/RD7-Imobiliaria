@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
@@ -9,10 +8,57 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
-import { Eye, EyeOff, Lock, Mail, AlertCircle } from "lucide-react"
+import { Eye, EyeOff, Lock, Mail, AlertCircle, User, Users, Shield } from "lucide-react"
 
-export function LoginForm() {
+type UserType = "user" | "employee" | "admin"
+
+interface UserTypeConfig {
+  title: string
+  description: string
+  icon: React.ReactNode
+  credentials: {
+    email: string
+    password: string
+  }
+  redirectPath: string
+}
+
+const userTypeConfigs: Record<UserType, UserTypeConfig> = {
+  user: {
+    title: "Área do Cliente",
+    description: "Acesse sua conta e acompanhe seus imóveis",
+    icon: <User className="h-5 w-5" />,
+    credentials: {
+      email: "cliente@rd7.com.br",
+      password: "cliente123",
+    },
+    redirectPath: "/cliente/dashboard",
+  },
+  employee: {
+    title: "Área do Funcionário",
+    description: "Acesse o sistema de controle imobiliário",
+    icon: <Users className="h-5 w-5" />,
+    credentials: {
+      email: "funcionario@rd7.com.br",
+      password: "func123",
+    },
+    redirectPath: "/funcionario/dashboard",
+  },
+  admin: {
+    title: "Área do Administrador",
+    description: "Acesso completo ao sistema de gestão",
+    icon: <Shield className="h-5 w-5" />,
+    credentials: {
+      email: "admin@rd7.com.br",
+      password: "admin123",
+    },
+    redirectPath: "/admin/dashboard",
+  },
+}
+
+export function AdaptiveLoginForm() {
   const router = useRouter()
+  const [selectedUserType, setSelectedUserType] = useState<UserType>("user")
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState("")
@@ -22,15 +68,18 @@ export function LoginForm() {
     rememberMe: false,
   })
 
+  const currentConfig = userTypeConfigs[selectedUserType]
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
     setError("")
 
-    // Simular autenticação
+    // Simular autenticação baseada no tipo de usuário
     setTimeout(() => {
-      if (formData.email === "admin@rd7.com.br" && formData.password === "rd7123") {
-        router.push("/dashboard")
+      const config = userTypeConfigs[selectedUserType]
+      if (formData.email === config.credentials.email && formData.password === config.credentials.password) {
+        router.push(config.redirectPath)
       } else {
         setError("E-mail ou senha incorretos. Tente novamente.")
       }
@@ -43,12 +92,47 @@ export function LoginForm() {
     if (error) setError("")
   }
 
+  const handleUserTypeChange = (userType: UserType) => {
+    setSelectedUserType(userType)
+    setFormData({ email: "", password: "", rememberMe: false })
+    setError("")
+  }
+
   return (
     <Card className="border-border shadow-lg">
-      <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl font-bold text-foreground">Área do Funcionário</CardTitle>
-        <p className="text-muted-foreground">Acesse o sistema de controle imobiliário</p>
+      <CardHeader className="space-y-4">
+        {/* User Type Selection */}
+        <div className="grid grid-cols-3 gap-2">
+          {(Object.keys(userTypeConfigs) as UserType[]).map((userType) => (
+            <button
+              key={userType}
+              type="button"
+              onClick={() => handleUserTypeChange(userType)}
+              className={`p-3 rounded-lg border transition-all duration-200 ${
+                selectedUserType === userType
+                  ? "border-primary bg-primary text-primary-foreground"
+                  : "border-border bg-background hover:border-primary/50 text-foreground hover:bg-muted"
+              }`}
+            >
+              <div className="flex flex-col items-center space-y-1">
+                {userTypeConfigs[userType].icon}
+                <span className="text-xs font-medium">
+                  {userType === "user" ? "Cliente" : userType === "employee" ? "Funcionário" : "Admin"}
+                </span>
+              </div>
+            </button>
+          ))}
+        </div>
+
+        <div className="space-y-1">
+          <CardTitle className="text-2xl font-bold text-foreground flex items-center space-x-2">
+            {currentConfig.icon}
+            <span>{currentConfig.title}</span>
+          </CardTitle>
+          <p className="text-muted-foreground">{currentConfig.description}</p>
+        </div>
       </CardHeader>
+
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
           {error && (
@@ -108,7 +192,7 @@ export function LoginForm() {
                 Lembrar de mim
               </Label>
             </div>
-            <button type="button" className="text-sm text-accent hover:text-accent/80 transition-colors">
+            <button type="button" className="text-sm text-primary hover:text-primary/80 transition-colors font-medium">
               Esqueceu a senha?
             </button>
           </div>
@@ -124,20 +208,31 @@ export function LoginForm() {
 
           <div className="text-center pt-4 border-t border-border">
             <p className="text-sm text-muted-foreground">
-              Não tem acesso?{" "}
-              <button type="button" className="text-accent hover:text-accent/80 transition-colors">
-                Solicitar acesso
-              </button>
+              {selectedUserType === "user" ? (
+                <>
+                  Não tem conta?{" "}
+                  <button type="button" className="text-primary hover:text-primary/80 transition-colors font-medium">
+                    Cadastre-se
+                  </button>
+                </>
+              ) : (
+                <>
+                  Não tem acesso?{" "}
+                  <button type="button" className="text-primary hover:text-primary/80 transition-colors font-medium">
+                    Solicitar acesso
+                  </button>
+                </>
+              )}
             </p>
           </div>
         </form>
 
-        {/* credentials */}
+        {/* Credentials for demonstration */}
         <div className="mt-6 p-4 bg-muted/50 rounded-lg">
           <p className="text-xs text-muted-foreground mb-2 font-medium">Credenciais de demonstração:</p>
           <div className="text-xs text-muted-foreground space-y-1">
-            <p>E-mail: admin@rd7.com.br</p>
-            <p>Senha: rd7123</p>
+            <p>E-mail: {currentConfig.credentials.email}</p>
+            <p>Senha: {currentConfig.credentials.password}</p>
           </div>
         </div>
       </CardContent>

@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
@@ -9,9 +8,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
-import { Eye, EyeOff, Lock, Mail, AlertCircle } from "lucide-react"
+import { Eye, EyeOff, Lock, Mail, AlertCircle, User } from "lucide-react"
 
-export function LoginForm() {
+export function UserLoginForm() {
   const router = useRouter()
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -27,10 +26,10 @@ export function LoginForm() {
     setIsLoading(true)
     setError("")
 
-    // Simular autenticação
+    // Simular autenticação para cliente
     setTimeout(() => {
-      if (formData.email === "admin@rd7.com.br" && formData.password === "rd7123") {
-        router.push("/dashboard")
+      if (formData.email === "cliente@rd7.com.br" && formData.password === "cliente123") {
+        router.push("/cliente/dashboard")
       } else {
         setError("E-mail ou senha incorretos. Tente novamente.")
       }
@@ -46,8 +45,11 @@ export function LoginForm() {
   return (
     <Card className="border-border shadow-lg">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl font-bold text-foreground">Área do Funcionário</CardTitle>
-        <p className="text-muted-foreground">Acesse o sistema de controle imobiliário</p>
+        <CardTitle className="text-2xl font-bold text-foreground flex items-center space-x-2">
+          <User className="h-5 w-5" />
+          <span>Área do Cliente</span>
+        </CardTitle>
+        <p className="text-muted-foreground">Acesse sua conta e acompanhe seus imóveis</p>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -124,9 +126,9 @@ export function LoginForm() {
 
           <div className="text-center pt-4 border-t border-border">
             <p className="text-sm text-muted-foreground">
-              Não tem acesso?{" "}
+              Não tem conta?{" "}
               <button type="button" className="text-accent hover:text-accent/80 transition-colors">
-                Solicitar acesso
+                Cadastre-se
               </button>
             </p>
           </div>
@@ -136,8 +138,8 @@ export function LoginForm() {
         <div className="mt-6 p-4 bg-muted/50 rounded-lg">
           <p className="text-xs text-muted-foreground mb-2 font-medium">Credenciais de demonstração:</p>
           <div className="text-xs text-muted-foreground space-y-1">
-            <p>E-mail: admin@rd7.com.br</p>
-            <p>Senha: rd7123</p>
+            <p>E-mail: cliente@rd7.com.br</p>
+            <p>Senha: cliente123</p>
           </div>
         </div>
       </CardContent>
