@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
@@ -9,7 +8,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
-import { Eye, EyeOff, Lock, Mail, AlertCircle } from "lucide-react"
+import { Eye, EyeOff, Lock, User, AlertCircle, Shield } from "lucide-react"
+import { apiService } from "@/lib/api"
+import { AuthManager } from "@/lib/auth"
 
 export function LoginForm() {
   const router = useRouter()
@@ -17,7 +18,7 @@ export function LoginForm() {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState("")
   const [formData, setFormData] = useState({
-    email: "",
+    username: "",
     password: "",
     rememberMe: false,
   })
@@ -27,15 +28,25 @@ export function LoginForm() {
     setIsLoading(true)
     setError("")
 
-    // Simular autenticação
-    setTimeout(() => {
-      if (formData.email === "admin@rd7.com.br" && formData.password === "rd7123") {
-        router.push("/dashboard")
-      } else {
-        setError("E-mail ou senha incorretos. Tente novamente.")
-      }
+    try {
+      const response = await apiService.login({
+        username: formData.username,
+        password: formData.password,
+      })
+
+      AuthManager.saveAuth({
+        username: formData.username,
+        role: response.role,
+        token: response.token,
+      })
+
+      const redirectPath = AuthManager.getRedirectPath(response.role)
+      router.push(redirectPath)
+    } catch (error) {
+      setError(error instanceof Error ? error.message : "Erro ao fazer login")
+    } finally {
       setIsLoading(false)
-    }, 1500)
+    }
   }
 
   const handleInputChange = (field: string, value: string | boolean) => {
@@ -45,10 +56,16 @@ export function LoginForm() {
 
   return (
     <Card className="border-border shadow-lg">
-      <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl font-bold text-foreground">Área do Funcionário</CardTitle>
-        <p className="text-muted-foreground">Acesse o sistema de controle imobiliário</p>
+      <CardHeader className="space-y-4">
+        <div className="space-y-1">
+          <CardTitle className="text-2xl font-bold text-foreground flex items-center space-x-2">
+            <Shield className="h-5 w-5" />
+            <span>Área do Administrador</span>
+          </CardTitle>
+          <p className="text-muted-foreground">Acesso completo ao sistema de gestão</p>
+        </div>
       </CardHeader>
+
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
           {error && (
@@ -59,15 +76,15 @@ export function LoginForm() {
           )}
 
           <div className="space-y-2">
-            <Label htmlFor="email">E-mail</Label>
+            <Label htmlFor="username">Usuário</Label>
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
               <Input
-                id="email"
-                type="email"
-                value={formData.email}
-                onChange={(e) => handleInputChange("email", e.target.value)}
-                placeholder="seu@email.com"
+                id="username"
+                type="text"
+                value={formData.username}
+                onChange={(e) => handleInputChange("username", e.target.value)}
+                placeholder="Seu usuário"
                 className="pl-10"
                 required
               />
@@ -108,7 +125,7 @@ export function LoginForm() {
                 Lembrar de mim
               </Label>
             </div>
-            <button type="button" className="text-sm text-accent hover:text-accent/80 transition-colors">
+            <button type="button" className="text-sm text-primary hover:text-primary/80 transition-colors font-medium">
               Esqueceu a senha?
             </button>
           </div>
@@ -121,25 +138,7 @@ export function LoginForm() {
           >
             {isLoading ? "Entrando..." : "Entrar"}
           </Button>
-
-          <div className="text-center pt-4 border-t border-border">
-            <p className="text-sm text-muted-foreground">
-              Não tem acesso?{" "}
-              <button type="button" className="text-accent hover:text-accent/80 transition-colors">
-                Solicitar acesso
-              </button>
-            </p>
-          </div>
         </form>
-
-        {/* credentials */}
-        <div className="mt-6 p-4 bg-muted/50 rounded-lg">
-          <p className="text-xs text-muted-foreground mb-2 font-medium">Credenciais de demonstração:</p>
-          <div className="text-xs text-muted-foreground space-y-1">
-            <p>E-mail: admin@rd7.com.br</p>
-            <p>Senha: rd7123</p>
-          </div>
-        </div>
       </CardContent>
     </Card>
   )

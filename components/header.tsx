@@ -4,7 +4,9 @@ import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Home, User } from "lucide-react"
+import { Menu, X, User } from "lucide-react"
+import logo from '@/public/logo.png';
+import Image from "next/image"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -22,8 +24,9 @@ export function Header() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <Home className="h-8 w-8 text-accent" />
-            <span className="text-xl font-bold text-foreground">RD7</span>
+            {/*<Home className="h-8 w-8 text-accent" />
+            <span className="text-xl font-bold text-foreground">RD7</span> */}
+            <Image src={logo} alt="RD7 Logo" className="h-16 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}

@@ -13,6 +13,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Home, Bell, Settings, LogOut, User, Menu, X } from "lucide-react"
+import logo from '@/public/logo.png';
+import Image from "next/image"
 
 export function DashboardHeader() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -23,9 +25,7 @@ export function DashboardHeader() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/dashboard" className="flex items-center space-x-2">
-            <Home className="h-8 w-8 text-accent" />
-            <span className="text-xl font-bold text-foreground">PremiumCasa</span>
-            <span className="text-sm text-muted-foreground bg-muted px-2 py-1 rounded">Admin</span>
+            <Image src={logo} alt="RD7 Logo" className="h-16 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}

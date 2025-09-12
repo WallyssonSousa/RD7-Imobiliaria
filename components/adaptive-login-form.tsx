@@ -32,7 +32,7 @@ const userTypeConfigs: Record<UserType, UserTypeConfig> = {
       email: "cliente@rd7.com.br",
       password: "cliente123",
     },
-    redirectPath: "/cliente/dashboard",
+    redirectPath: "/user/dashboard",
   },
   employee: {
     title: "Área do Funcionário",
@@ -42,7 +42,7 @@ const userTypeConfigs: Record<UserType, UserTypeConfig> = {
       email: "funcionario@rd7.com.br",
       password: "func123",
     },
-    redirectPath: "/funcionario/dashboard",
+    redirectPath: "/dashboard",
   },
   admin: {
     title: "Área do Administrador",
@@ -52,7 +52,7 @@ const userTypeConfigs: Record<UserType, UserTypeConfig> = {
       email: "admin@rd7.com.br",
       password: "admin123",
     },
-    redirectPath: "/admin/dashboard",
+    redirectPath: "/dashboard",
   },
 }
 

@@ -1,7 +1,8 @@
-import { AdaptiveLoginForm } from "@/components/adaptive-login-form"
+import { LoginForm } from "@/components/login-form"
 import { LoginHero } from "@/components/login-hero"
+import Image from "next/image"
 import Link from "next/link"
-import { Home } from "lucide-react"
+import logo from "@/public/logo.png";
 
 export default function LoginPage() {
   return (
@@ -11,12 +12,13 @@ export default function LoginPage() {
           {/* Logo */}
           <div className="mb-8">
             <Link href="/" className="flex items-center space-x-2">
-              <Home className="h-8 w-8 text-accent" />
-              <span className="text-2xl font-bold text-foreground">RD7</span>
-            </Link>
+              {/* <Home className="h-8 w-8 text-accent" />
+              <span className="text-2xl font-bold text-foreground">RD7</span>*/}
+              <Image src={logo} alt="RD7 Logo" className="h-20 w-auto" />
+            </Link> 
           </div>
 
-          <AdaptiveLoginForm />
+          <LoginForm />
 
           <div className="mt-8 text-center">
             <Link href="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
