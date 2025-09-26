@@ -11,15 +11,17 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea"
 import { imovelService } from "@/lib/imovel"
 import { imovelSchema, type ImovelFormData } from "@/schemas/imovel"
-import { TIPO_IMOVEL_OPTIONS, FINALIDADE_OPTIONS, MOBILIA_OPTIONS } from "@/lib/imovel-types"
+import { TIPO_IMOVEL_OPTIONS, FINALIDADE_OPTIONS, MOBILIA_OPTIONS, type Imovel } from "@/lib/imovel-types"
+import { useEffect } from "react"
 
 interface Props {
   open: boolean
   onClose: () => void
   onSuccess: () => void
+  imovel?: Imovel
 }
 
-export function CreateImovelModal({ open, onClose, onSuccess }: Props) {
+export function UpdateImovelModal({ open, onClose, onSuccess, imovel }: Props) {
   const {
     register,
     handleSubmit,
@@ -29,27 +31,42 @@ export function CreateImovelModal({ open, onClose, onSuccess }: Props) {
     reset,
   } = useForm<ImovelFormData>({
     resolver: zodResolver(imovelSchema),
-    defaultValues: {
-      disponivel: true,
-      mobilia: "VAZIO",
-      quartos: 0,
-      suites: 0,
-      banheiros: 0,
-      vagas: 0,
-      condominio: 0,
-    },
   })
 
   const disponivel = watch("disponivel")
 
+  useEffect(() => {
+    if (open && imovel) {
+      reset({
+        tipo_imovel: imovel.tipo_imovel,
+        cep: imovel.cep,
+        complemento: imovel.complemento || "",
+        metragem: imovel.metragem,
+        quartos: imovel.quartos || 0,
+        suites: imovel.suites || 0,
+        banheiros: imovel.banheiros || 0,
+        vagas: imovel.vagas || 0,
+        valor_aluguel: imovel.valor_aluguel,
+        valor_venda: imovel.valor_venda,
+        condominio: imovel.condominio || 0,
+        iptu: imovel.iptu,
+        finalidade: imovel.finalidade,
+        disponivel: imovel.disponivel ?? true,
+        mobilia: imovel.mobilia || "VAZIO",
+        observacoes: imovel.observacoes || "",
+      })
+    }
+  }, [open, imovel, reset])
+
   const onSubmit = async (data: ImovelFormData) => {
+    if (!imovel?.id) return
+
     try {
-      await imovelService.criar(data)
-      reset()
+      await imovelService.atualizar(imovel.id, data)
       onSuccess()
     } catch (err) {
       console.error(err)
-      alert(err instanceof Error ? err.message : "Erro ao criar imóvel")
+      alert(err instanceof Error ? err.message : "Erro ao atualizar imóvel")
     }
   }
 
@@ -58,11 +75,13 @@ export function CreateImovelModal({ open, onClose, onSuccess }: Props) {
     onClose()
   }
 
+  if (!imovel) return null
+
   return (
     <Dialog open={open} onOpenChange={handleClose}>
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle>Cadastrar Novo Imóvel</DialogTitle>
+          <DialogTitle>Editar Imóvel</DialogTitle>
         </DialogHeader>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -72,7 +91,10 @@ export function CreateImovelModal({ open, onClose, onSuccess }: Props) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="tipo_imovel">Tipo de Imóvel *</Label>
-                <Select onValueChange={(value) => setValue("tipo_imovel", value as any)}>
+                <Select
+                  defaultValue={imovel.tipo_imovel}
+                  onValueChange={(value) => setValue("tipo_imovel", value as any)}
+                >
                   <SelectTrigger>
                     <SelectValue placeholder="Selecione o tipo" />
                   </SelectTrigger>
@@ -89,7 +111,10 @@ export function CreateImovelModal({ open, onClose, onSuccess }: Props) {
 
               <div className="space-y-2">
                 <Label htmlFor="finalidade">Finalidade *</Label>
-                <Select onValueChange={(value) => setValue("finalidade", value as any)}>
+                <Select
+                  defaultValue={imovel.finalidade}
+                  onValueChange={(value) => setValue("finalidade", value as any)}
+                >
                   <SelectTrigger>
                     <SelectValue placeholder="Selecione a finalidade" />
                   </SelectTrigger>
@@ -160,7 +185,10 @@ export function CreateImovelModal({ open, onClose, onSuccess }: Props) {
 
               <div className="space-y-2">
                 <Label htmlFor="mobilia">Mobília</Label>
-                <Select onValueChange={(value) => setValue("mobilia", value as any)}>
+                <Select
+                  defaultValue={imovel.mobilia || "VAZIO"}
+                  onValueChange={(value) => setValue("mobilia", value as any)}
+                >
                   <SelectTrigger>
                     <SelectValue placeholder="Selecione" />
                   </SelectTrigger>
@@ -257,7 +285,7 @@ export function CreateImovelModal({ open, onClose, onSuccess }: Props) {
               Cancelar
             </Button>
             <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? "Salvando..." : "Salvar Imóvel"}
+              {isSubmitting ? "Atualizando..." : "Atualizar Imóvel"}
             </Button>
           </div>
         </form>
