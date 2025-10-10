@@ -1,6 +1,5 @@
 "use client"
 
-import type React from "react"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
@@ -11,12 +10,15 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Eye, EyeOff, Lock, User, AlertCircle, Shield } from "lucide-react"
 import { apiService } from "@/lib/api"
 import { AuthManager } from "@/lib/auth"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { ClienteForm } from "@/components/clientes/ClientesForm"
 
 export function LoginForm() {
   const router = useRouter()
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState("")
+  const [openCadastro, setOpenCadastro] = useState(false)
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -40,10 +42,10 @@ export function LoginForm() {
         token: response.token,
       })
 
-      const redirectPath = AuthManager.getRedirectPath(response.role)
-      router.push(redirectPath)
+      router.push(AuthManager.getRedirectPath(response.role))
     } catch (error) {
-      setError(error instanceof Error ? error.message : "Erro ao fazer login")
+      console.error(error)
+      setError("Usuário ou senha inválidos.")
     } finally {
       setIsLoading(false)
     }
@@ -60,9 +62,9 @@ export function LoginForm() {
         <div className="space-y-1">
           <CardTitle className="text-2xl font-bold text-foreground flex items-center space-x-2">
             <Shield className="h-5 w-5" />
-            <span>Área do Administrador</span>
+            <span>Área do Usuário</span>
           </CardTitle>
-          <p className="text-muted-foreground">Acesso completo ao sistema de gestão</p>
+          <p className="text-muted-foreground">Acesso para administradores e clientes</p>
         </div>
       </CardHeader>
 
@@ -84,7 +86,7 @@ export function LoginForm() {
                 type="text"
                 value={formData.username}
                 onChange={(e) => handleInputChange("username", e.target.value)}
-                placeholder="Seu usuário"
+                placeholder="Seu usuário ou email"
                 className="pl-10"
                 required
               />
@@ -139,6 +141,26 @@ export function LoginForm() {
             {isLoading ? "Entrando..." : "Entrar"}
           </Button>
         </form>
+
+        <div className="text-center pt-2">
+          <Dialog open={openCadastro} onOpenChange={setOpenCadastro}>
+            <DialogTrigger asChild>
+              <Button variant="ghost" className="text-sm text-primary hover:text-primary/80">
+                Ainda não tem conta? Cadastre-se
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="max-w-md">
+              <DialogHeader>
+                <DialogTitle>Novo Usuário</DialogTitle>
+              </DialogHeader>
+              <ClienteForm
+                onSuccess={() => {
+                  setOpenCadastro(false)
+                }}
+              />
+            </DialogContent>
+          </Dialog>
+        </div>
       </CardContent>
     </Card>
   )
