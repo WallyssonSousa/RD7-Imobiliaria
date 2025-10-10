@@ -6,10 +6,10 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { clienteService } from "@/lib/clientes"
-import { Loader2 } from "lucide-react"
+import { Loader2, CheckCircle2, AlertCircle } from "lucide-react"
 
 interface ClienteFormProps {
-  onSuccess: () => void
+  onSuccess?: () => void
 }
 
 export function ClienteForm({ onSuccess }: ClienteFormProps) {
@@ -20,6 +20,7 @@ export function ClienteForm({ onSuccess }: ClienteFormProps) {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value })
+    setErro(null)
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -32,33 +33,38 @@ export function ClienteForm({ onSuccess }: ClienteFormProps) {
       await clienteService.criar(form)
       setForm({ nome: "", email: "", senha: "" })
       setSucesso(true)
-      onSuccess()
+      onSuccess?.()
     } catch (error) {
       console.error(error)
-      setErro("Erro ao cadastrar cliente. Verifique os dados e tente novamente.")
+      setErro("Erro ao cadastrar. Tente novamente.")
     } finally {
       setLoading(false)
     }
   }
 
   return (
-    <Card className="shadow-sm border border-border/50 backdrop-blur-md">
+    <Card className="shadow-lg border border-border/60 backdrop-blur-lg bg-background/80">
       <CardContent className="pt-6">
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-            <Label className="mb-1.5" htmlFor="nome">Nome</Label>
+            <Label htmlFor="nome" className="mb-1.5 block text-sm font-medium text-foreground">
+              Nome completo
+            </Label>
             <Input
               id="nome"
               name="nome"
-              placeholder="Ex: Maria Silva"
+              placeholder="Ex: João Silva"
               value={form.nome}
               onChange={handleChange}
               required
+              className="h-11"
             />
           </div>
 
           <div>
-            <Label className="mb-1.5" htmlFor="email">Email</Label>
+            <Label htmlFor="email" className="mb-1.5 block text-sm font-medium text-foreground">
+              E-mail
+            </Label>
             <Input
               id="email"
               type="email"
@@ -67,11 +73,14 @@ export function ClienteForm({ onSuccess }: ClienteFormProps) {
               value={form.email}
               onChange={handleChange}
               required
+              className="h-11"
             />
           </div>
 
           <div>
-            <Label className="mb-1.5" htmlFor="senha">Senha</Label>
+            <Label htmlFor="senha" className="mb-1.5 block text-sm font-medium text-foreground">
+              Senha
+            </Label>
             <Input
               id="senha"
               type="password"
@@ -80,24 +89,32 @@ export function ClienteForm({ onSuccess }: ClienteFormProps) {
               value={form.senha}
               onChange={handleChange}
               required
+              className="h-11"
             />
           </div>
 
-          {erro && <p className="text-sm text-destructive">{erro}</p>}
-          {sucesso && (
-            <p className="text-sm text-green-600">
-              Cliente cadastrado com sucesso!
-            </p>
+          {erro && (
+            <div className="flex items-center gap-2 text-sm text-destructive bg-destructive/10 p-2 rounded-lg">
+              <AlertCircle className="h-4 w-4" />
+              <span>{erro}</span>
+            </div>
           )}
 
-          <Button type="submit" className="w-full" disabled={loading}>
+          {sucesso && (
+            <div className="flex items-center gap-2 text-sm text-green-600 bg-green-500/10 p-2 rounded-lg">
+              <CheckCircle2 className="h-4 w-4" />
+              <span>Cadastro realizado com sucesso!</span>
+            </div>
+          )}
+
+          <Button type="submit" className="w-full h-11 font-medium" disabled={loading}>
             {loading ? (
-              <div className="flex items-center justify-center space-x-2">
+              <div className="flex items-center justify-center gap-2">
                 <Loader2 className="h-4 w-4 animate-spin" />
                 <span>Cadastrando...</span>
               </div>
             ) : (
-              "Cadastrar Cliente"
+              "Cadastrar"
             )}
           </Button>
         </form>
