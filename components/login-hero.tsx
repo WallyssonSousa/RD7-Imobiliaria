@@ -29,25 +29,6 @@ export function LoginHero() {
           Gerencie propriedades, clientes e transações com eficiência e segurança. Sua ferramenta completa para o
           sucesso no mercado imobiliário.
         </p>
-
-        <div className="grid grid-cols-1 gap-4 text-sm text-slate-300">
-          <div className="flex items-center space-x-3">
-            <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-            <span>Gestão completa de propriedades</span>
-          </div>
-          <div className="flex items-center space-x-3">
-            <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-            <span>Controle de clientes e leads</span>
-          </div>
-          <div className="flex items-center space-x-3">
-            <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-            <span>Relatórios e analytics avançados</span>
-          </div>
-          <div className="flex items-center space-x-3">
-            <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-            <span>Segurança e backup automático</span>
-          </div>
-        </div>
       </div>
     </div>
   )
