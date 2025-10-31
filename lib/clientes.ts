@@ -8,6 +8,11 @@ export interface Cliente {
   email: string
   senha?: string
   criado_em?: string
+  funcoes_atuais?: {
+    funcionario: boolean
+    inquilino: boolean
+    proprietario: boolean
+  }
 }
 
 class ClienteService {
@@ -33,6 +38,39 @@ class ClienteService {
 
     return data.cliente
   }
+
+  async atribuirFuncao(clienteId: number, funcao: "funcionario" | "inquilino" | "proprietario") {
+    const token = localStorage.getItem("auth_token")
+
+    const response = await fetch(`${API_BASE_URL}/atribuir_funcao`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ cliente_id: clienteId, funcao }),
+    })
+
+    const data = await response.json()
+    if (!response.ok) throw new Error(data.erro || "Erro ao atribuir função")
+    return data
+  }
+
+  async obterPorId(clienteId: number): Promise<Cliente> {
+    const token = localStorage.getItem("auth_token")
+    const response = await fetch(`${API_BASE_URL}/cliente/${clienteId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+
+    const data = await response.json()
+    if (!response.ok) throw new Error(data.erro || "Erro ao buscar cliente")
+    return data
+  }
+
 }
 
 export const clienteService = new ClienteService()
